@@ -3,10 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+<!--
+参考地址：https://css-tricks.com/balancing-on-a-pivot-with-flexbox/
+总结：
+    text-align: 作用于block的子元素在水平方向上的位置
+    vertical-align：仅作用于inline, inline-block and table-cell的元素，在垂直方向上的位置
+    实现技巧：
+        通过order改变元素呈现顺序
+        通过将最后一个元素设置margin-right: auto;使空间全部占用
+        通过position: relative;配合left/right进行位置移动控制显式效果
+-->
     <style>
-        /*
-        * 参考地址：https://css-tricks.com/balancing-on-a-pivot-with-flexbox/
-        */
         :root{
             font-size: 4vmin;
             font-family: sans-serif;
@@ -38,6 +45,17 @@
             display: inline-block;
             height: 100%;
             vertical-align: middle;
+        }
+        .puzzle .word .letter:last-child{
+            margin-right: auto;
+        }
+        .puzzle .word .pivot{
+            background-color: #75a987;
+        }
+        .puzzle .word .pivot,
+        .puzzle .word .pivot ~ .letter{
+            order: 1;
+            left: 50%;
         }
     </style>
 </head>
